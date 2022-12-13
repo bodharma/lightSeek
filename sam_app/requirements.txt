@@ -1,0 +1,4 @@
+requests
+python-telegram-bot==13.11
+requests-html
+aws-lambda-powertools

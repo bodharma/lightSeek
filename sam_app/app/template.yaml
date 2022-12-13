@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  python3.9
+
+  SAM for lightSeek
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: python3.9
+    Architectures:
+      - x86_64
+
+Resources:
+  LightSeekFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: lightSeeker
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Description: 'Look for light schedules'
+      MemorySize: 1024
+      Timeout: 900
+      Layers:
+              - !Ref libs
+  libs:
+      Type: AWS::Serverless::LayerVersion
+      Properties:
+        LayerName: lightSeeker-dependencies-layer
+        Description: Lambda layer with libs like telegram and aws-power-tools
+        ContentUri: ../libs
