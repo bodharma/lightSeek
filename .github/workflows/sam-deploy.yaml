@@ -13,5 +13,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
+      - run: cd sam_app/
+      - run: pip install -r requirements.txt -t libs/python
+      - run: cd app
       - run: sam build
       - run: sam deploy --confirm-changeset --no-fail-on-empty-changeset
