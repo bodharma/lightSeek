@@ -21,6 +21,9 @@ Resources:
       Description: 'Look for light schedules'
       MemorySize: 1024
       Timeout: 900
+      Environment:
+        Variables:
+          TELEGRAM_TOKEN:
       Layers:
               - !Ref libs
   libs:
